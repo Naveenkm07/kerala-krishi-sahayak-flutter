@@ -1,0 +1,14 @@
+[build]
+  publish = "build/web"
+  command = "flutter build web --web-renderer html"
+
+[build.environment]
+  FLUTTER_WEB = "true"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  FLUTTER_WEB_AUTO_DETECT = "true"
