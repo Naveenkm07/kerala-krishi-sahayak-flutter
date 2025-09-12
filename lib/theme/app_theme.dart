@@ -51,7 +51,7 @@ class AppTheme {
         color: Colors.white,
       ),
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: surfaceLight,
       elevation: 2,
       shape: RoundedRectangleBorder(
@@ -105,11 +105,10 @@ class AppTheme {
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
     ),
-    bottomNavigationBarTheme: const BottomNavigationBarTheme(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: surfaceLight,
       selectedItemColor: primaryTeal,
       unselectedItemColor: textSecondaryLight,
-      type: BottomNavigationBarType.fixed,
       elevation: 8,
     ),
     textTheme: const TextTheme(
@@ -155,7 +154,7 @@ class AppTheme {
         color: backgroundDark,
       ),
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: surfaceDark,
       elevation: 2,
       shape: RoundedRectangleBorder(
@@ -209,11 +208,10 @@ class AppTheme {
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
     ),
-    bottomNavigationBarTheme: const BottomNavigationBarTheme(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: surfaceDark,
       selectedItemColor: Color(0xFF32B8C6),
       unselectedItemColor: textSecondaryDark,
-      type: BottomNavigationBarType.fixed,
       elevation: 8,
     ),
     textTheme: const TextTheme(

@@ -55,7 +55,6 @@ class _MainScreenState extends State<MainScreen> {
                       appState.currentUser!.location,
                       style: const TextStyle(
                         fontSize: 12,
-                        opacity: 0.9,
                       ),
                     ),
                   ),

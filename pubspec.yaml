@@ -45,11 +45,13 @@ flutter:
     - assets/images/
     - assets/icons/
   
-  fonts:
-    - family: FKGroteskNeue
-      fonts:
-        - asset: assets/fonts/FKGroteskNeue-Regular.ttf
-        - asset: assets/fonts/FKGroteskNeue-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/FKGroteskNeue-Bold.ttf
-          weight: 700
+  # Custom fonts temporarily disabled because font files are not present.
+  # To re-enable, add the files under assets/fonts/ and restore the section below.
+  # fonts:
+  #   - family: FKGroteskNeue
+  #     fonts:
+  #       - asset: assets/fonts/FKGroteskNeue-Regular.ttf
+  #       - asset: assets/fonts/FKGroteskNeue-Medium.ttf
+  #         weight: 500
+  #       - asset: assets/fonts/FKGroteskNeue-Bold.ttf
+  #         weight: 700
