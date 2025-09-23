@@ -115,11 +115,11 @@ class AppStateProvider extends ChangeNotifier {
       String weatherUrl;
       if (position != null) {
         // Use GPS coordinates for more accurate weather
-        weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=d6a313375646b1eb9a3d49c8e8de16d4&units=metric';
+        weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${const String.fromEnvironment('WEATHER_API_KEY', defaultValue: 'YOUR_WEATHER_API_KEY_HERE')}&units=metric';
       } else {
         // Fallback to user's saved location or default Kerala location
         final location = _currentUser?.location ?? 'Wayanad,Kerala';
-        weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=$location&appid=d6a313375646b1eb9a3d49c8e8de16d4&units=metric';
+        weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=$location&appid=${const String.fromEnvironment('WEATHER_API_KEY', defaultValue: 'YOUR_WEATHER_API_KEY_HERE')}&units=metric';
       }
 
       final response = await http.get(Uri.parse(weatherUrl));
@@ -214,7 +214,7 @@ class AppStateProvider extends ChangeNotifier {
     try {
       // Check internet connectivity first
       final response = await http.post(
-        Uri.parse('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBL82J_NU4PV5crAfAmgrCQl75JrT-hmmQ'),
+        Uri.parse('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${const String.fromEnvironment('GOOGLE_API_KEY', defaultValue: 'YOUR_GOOGLE_API_KEY_HERE')}'),
         headers: {
           'Content-Type': 'application/json',
         },
