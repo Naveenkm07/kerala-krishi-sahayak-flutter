@@ -59,15 +59,23 @@ class _VoiceScreenState extends State<VoiceScreen> {
     // Scroll to bottom
     _scrollToBottom();
     
-    // Simulate AI response delay
-    Future.delayed(const Duration(milliseconds: 1500), () {
+    // Get real AI response
+    appState.getAIResponse(message).then((response) {
       if (mounted) {
         setState(() {
           _isTyping = false;
         });
         
-        final response = appState.getAIResponse(message);
         appState.addChatMessage(response, 'bot');
+        _scrollToBottom();
+      }
+    }).catchError((error) {
+      if (mounted) {
+        setState(() {
+          _isTyping = false;
+        });
+        
+        appState.addChatMessage('Sorry, I am having trouble connecting. Please try again.', 'bot');
         _scrollToBottom();
       }
     });

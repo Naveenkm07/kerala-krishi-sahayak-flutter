@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'package:geolocator/geolocator.dart';
 import '../models/farmer.dart';
 import '../models/weather.dart';
 import '../models/alert.dart';
@@ -62,7 +64,87 @@ class AppStateProvider extends ChangeNotifier {
     _schemes = AppData.schemes.map((scheme) => SchemeInfo.fromJson(scheme)).toList();
     _pestDiseases = AppData.pestDiseases.map((pest) => PestDiseaseInfo.fromJson(pest)).toList();
     _cropCalendar = List<Map<String, dynamic>>.from(AppData.cropCalendar);
+    
+    // Load real weather data if internet available
+    _loadRealWeatherData();
     notifyListeners();
+  }
+
+  // Get User's Real Location
+  Future<Position?> _getCurrentLocation() async {
+    try {
+      // Check if location services are enabled
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        debugPrint('Location services are disabled.');
+        return null;
+      }
+
+      // Check location permissions
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          debugPrint('Location permissions are denied');
+          return null;
+        }
+      }
+
+      if (permission == LocationPermission.deniedForever) {
+        debugPrint('Location permissions are permanently denied');
+        return null;
+      }
+
+      // Get current position
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+      return position;
+    } catch (e) {
+      debugPrint('Error getting location: $e');
+      return null;
+    }
+  }
+
+  // Real Weather API using GPS location
+  Future<void> _loadRealWeatherData() async {
+    try {
+      // Try to get real GPS location first
+      Position? position = await _getCurrentLocation();
+      
+      String weatherUrl;
+      if (position != null) {
+        // Use GPS coordinates for more accurate weather
+        weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=d6a313375646b1eb9a3d49c8e8de16d4&units=metric';
+      } else {
+        // Fallback to user's saved location or default Kerala location
+        final location = _currentUser?.location ?? 'Wayanad,Kerala';
+        weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=$location&appid=d6a313375646b1eb9a3d49c8e8de16d4&units=metric';
+      }
+
+      final response = await http.get(Uri.parse(weatherUrl));
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        _currentWeather = WeatherData(
+          location: '${data['name']}, ${data['sys']['country']}',
+          temperature: data['main']['temp'].round(),
+          humidity: data['main']['humidity'],
+          rainfall: 0,
+          windSpeed: data['wind']['speed'].round(),
+          condition: data['weather'][0]['description'],
+        );
+        notifyListeners();
+      }
+    } catch (e) {
+      // Keep static data if API fails
+      debugPrint('Weather API error: $e');
+    }
+  }
+
+  // Refresh weather data manually
+  Future<void> refreshWeatherData() async {
+    await _loadRealWeatherData();
   }
 
   Future<bool> registerUser({
@@ -127,7 +209,38 @@ class AppStateProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  String getAIResponse(String userMessage) {
+  // Real AI Response using Google Gemini API
+  Future<String> getAIResponse(String userMessage) async {
+    try {
+      // Check internet connectivity first
+      final response = await http.post(
+        Uri.parse('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBL82J_NU4PV5crAfAmgrCQl75JrT-hmmQ'),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'contents': [{
+            'parts': [{
+              'text': 'You are a Kerala farming assistant. Answer in both Malayalam and English. User asks: $userMessage'
+            }]
+          }]
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return data['candidates'][0]['content']['parts'][0]['text'];
+      } else {
+        return _getFallbackResponse(userMessage);
+      }
+    } catch (e) {
+      // Fallback to offline responses if no internet
+      return _getFallbackResponse(userMessage);
+    }
+  }
+
+  // Fallback for offline mode
+  String _getFallbackResponse(String userMessage) {
     final message = userMessage.toLowerCase();
     
     // Check for exact matches first

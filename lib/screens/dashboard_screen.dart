@@ -85,6 +85,27 @@ class DashboardScreen extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 16),
+          // Refresh Location/Weather Button
+          ElevatedButton.icon(
+            onPressed: () async {
+              await appState.refreshWeatherData();
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Weather updated with your current location!'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+              }
+            },
+            icon: const Icon(Icons.refresh),
+            label: const Text('Update Location & Weather'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+              foregroundColor: Theme.of(context).colorScheme.primary,
+            ),
+          ),
         ],
       ),
     );
