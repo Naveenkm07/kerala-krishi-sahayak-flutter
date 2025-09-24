@@ -1,0 +1,159 @@
+{
+  "activity_logs": [
+    {
+      "farmerId": "farmer_001",
+      "activities": [
+        {
+          "date": "2025-09-23",
+          "time": "06:30",
+          "activityType": "irrigation",
+          "crop": "Rice",
+          "duration": "2 hours",
+          "notes": "Morning irrigation before expected rain",
+          "weather": "Partly cloudy, 28°C"
+        },
+        {
+          "date": "2025-09-22", 
+          "time": "16:00",
+          "activityType": "fertilizer_application",
+          "crop": "Rice",
+          "fertilizerType": "Urea",
+          "quantity": "25 kg",
+          "notes": "Applied during tillering stage",
+          "weather": "Clear, 32°C"
+        },
+        {
+          "date": "2025-09-21",
+          "time": "07:00", 
+          "activityType": "pest_monitoring",
+          "crop": "Coconut",
+          "findings": "Few red palm weevil signs on tree #3",
+          "action": "Applied neem oil spray",
+          "notes": "Need to monitor closely for next week"
+        }
+      ]
+    },
+    {
+      "farmerId": "farmer_002",
+      "activities": [
+        {
+          "date": "2025-09-23",
+          "time": "08:00",
+          "activityType": "harvesting", 
+          "crop": "Black Pepper",
+          "quantity": "15 kg",
+          "quality": "Premium grade",
+          "notes": "Perfect ripeness, good market price expected",
+          "weather": "Light drizzle, 24°C"
+        },
+        {
+          "date": "2025-09-20",
+          "time": "15:30",
+          "activityType": "pruning",
+          "crop": "Cardamom", 
+          "area": "0.5 acres",
+          "notes": "Removed dead leaves and shoots",
+          "weather": "Overcast, 26°C"
+        }
+      ]
+    },
+    {
+      "farmerId": "farmer_003",
+      "activities": [
+        {
+          "date": "2025-09-23",
+          "time": "09:00",
+          "activityType": "planting",
+          "crop": "Coffee",
+          "variety": "Arabica",
+          "quantity": "200 saplings", 
+          "spacing": "6x6 feet",
+          "notes": "Planted during optimal monsoon period",
+          "weather": "Heavy rain, 22°C"
+        },
+        {
+          "date": "2025-09-19",
+          "time": "14:00",
+          "activityType": "disease_treatment",
+          "crop": "Banana",
+          "disease": "Black Sigatoka",
+          "treatment": "Copper fungicide spray",
+          "notes": "Applied preventive treatment before spread"
+        }
+      ]
+    }
+  ],
+  
+  "sample_ai_queries": [
+    {
+      "farmerId": "farmer_001",
+      "queries": [
+        {
+          "timestamp": "2025-09-23T10:30:00",
+          "language": "Malayalam",
+          "query": "എന്റെ നെല്ലിന് ഇന്ന് എന്ത് ചെയ്യണം?",
+          "translation": "What should I do for my rice today?",
+          "ai_response": "നിങ്ങളുടെ നെല്ലുകൃഷിക്ക് ഇന്ന് വിശേഷ പരിചരണം വേണം. മഴ പ്രതീക്ഷിക്കുന്നതിനാൽ വളമിടൽ ഒഴിവാക്കുക. കളകൾ നീക്കം ചെയ്യുകയും ജലനിരപ്പ് പരിശോധിക്കുകയും ചെയ്യുക.",
+          "context": "Palakkad location, tillering stage rice, monsoon season"
+        },
+        {
+          "timestamp": "2025-09-22T16:45:00", 
+          "language": "English",
+          "query": "How to control pests in coconut trees?",
+          "ai_response": "For coconut pest control in Kerala climate: 1) Regular inspection for red palm weevil signs 2) Apply neem-based bio-pesticide monthly 3) Remove dead fronds and nuts 4) Install pheromone traps around trees. Best time for treatment is early morning or evening.",
+          "context": "Palakkad location, mature coconut trees, preventive care"
+        }
+      ]
+    },
+    {
+      "farmerId": "farmer_002",
+      "queries": [
+        {
+          "timestamp": "2025-09-23T11:15:00",
+          "language": "Malayalam", 
+          "query": "മഴക്കാലത്ത് കുരുമുളകിന് എന്ത് പ്രത്യേക പരിചരണം വേണം?",
+          "translation": "What special care does black pepper need during monsoon?",
+          "ai_response": "മഴക്കാലത്ത് കുരുമുളകിന്: 1) ഫംഗൽ അണുബാധ തടയാൻ വേപ്പെണ്ണ തളിക്കുക 2) ജലക്കെട്ട് ഒഴിവാക്കാൻ ഡ്രെയിനേജ് ഉറപ്പാക്കുക 3) അധിക ഇലകൾ മുറിച്ചുമാറ്റുക 4) മണ്ണിൽ കാൽസ്യം കാർബണേറ്റ് ചേർക്കുക.",
+          "context": "Idukki hills location, monsoon season, spice cultivation"
+        }
+      ]
+    }
+  ],
+
+  "weather_responses": [
+    {
+      "location": "Palakkad, Kerala",
+      "current": {
+        "temperature": 28,
+        "humidity": 78,
+        "condition": "Partly cloudy", 
+        "windSpeed": 12,
+        "rainfall": 2.5
+      },
+      "forecast": [
+        { "date": "2025-09-24", "temp": "26-32°C", "condition": "Light rain", "advice": "Avoid fertilizer application" },
+        { "date": "2025-09-25", "temp": "24-30°C", "condition": "Heavy rain", "advice": "Check drainage systems" },
+        { "date": "2025-09-26", "temp": "25-31°C", "condition": "Cloudy", "advice": "Good for pest monitoring" }
+      ]
+    }
+  ],
+
+  "government_schemes": [
+    {
+      "schemeName": "Pradhan Mantri Kisan Samman Nidhi",
+      "malayalamName": "പ്രധാനമന്ത്രി കിസാൻ സമ്മാൻ നിധി",
+      "eligibility": "All landholding farmers",
+      "benefits": "₹6000 per year in 3 installments",
+      "applicationProcess": "Online through PM-Kisan portal",
+      "documents": ["Aadhaar", "Bank details", "Land records"]
+    },
+    {
+      "schemeName": "Kerala Karshaka Pension Scheme", 
+      "malayalamName": "കേരള കർഷക പെൻഷൻ പദ്ധതി",
+      "eligibility": "Farmers above 60 years",
+      "benefits": "₹1200 monthly pension",
+      "applicationProcess": "Through Village Office",
+      "documents": ["Age proof", "Farming certificate", "Income certificate"]
+    }
+  ]
+}

@@ -1,6 +1,23 @@
-# Kerala Krishi Sahayak - Flutter Mobile App
+# Kerala Krishi Sahayak - Krishi Sakhi 🌾
 
-AI-Powered Farming Assistant for Kerala Farmers
+**Smart India Hackathon 2025 | Problem Statement ID: 25074**
+
+AI-Powered Personal Farming Assistant for Kerala Farmers
+
+> **One-line Pitch:** A Malayalam-first, conversational digital companion that helps smallholder farmers record activities, get personalized advisories, and receive timely reminders using AI and local context.
+
+---
+
+## 🏆 SIH 2025 Submission
+
+**🎯 For Judges & Evaluators:**
+- **[📋 Complete SIH Documentation](./README-SIH.md)** - Comprehensive submission details
+- **[🎬 Demo Plan & Script](./demo-plan.md)** - 3-minute demo walkthrough  
+- **[🧪 Sample Data](./sample_data/)** - Demo farmer profiles and test scenarios
+- **[🤖 AI Prompt Engineering](./windsurf_prompts.md)** - Advanced AI conversation templates
+- **[📱 Ready APK](./build/app/outputs/flutter-apk/app-debug.apk)** - Install and test immediately
+
+---
 
 ## 📱 Overview
 

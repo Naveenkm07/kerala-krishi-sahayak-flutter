@@ -1,0 +1,89 @@
+{
+  "demo_farmers": [
+    {
+      "id": "farmer_001",
+      "name": "Ravi Kumar",
+      "phone": "9876543210",
+      "location": "Palakkad, Kerala",
+      "coordinates": {
+        "latitude": 10.7905,
+        "longitude": 76.6541
+      },
+      "crops": ["Rice", "Coconut"],
+      "landSize": "3 acres",
+      "soilType": "Alluvial soil",
+      "irrigationType": "Canal irrigation",
+      "farmingExperience": "15 years",
+      "preferredLanguage": "Malayalam",
+      "registrationDate": "2025-09-01"
+    },
+    {
+      "id": "farmer_002", 
+      "name": "Priya Nair",
+      "phone": "9876543211",
+      "location": "Idukki, Kerala",
+      "coordinates": {
+        "latitude": 9.9181,
+        "longitude": 76.9672
+      },
+      "crops": ["Black Pepper", "Cardamom", "Ginger"],
+      "landSize": "1.5 acres",
+      "soilType": "Red laterite",
+      "irrigationType": "Drip irrigation", 
+      "farmingExperience": "8 years",
+      "preferredLanguage": "Malayalam",
+      "registrationDate": "2025-09-02"
+    },
+    {
+      "id": "farmer_003",
+      "name": "Mohanan Pillai", 
+      "phone": "9876543212",
+      "location": "Wayanad, Kerala",
+      "coordinates": {
+        "latitude": 11.6054,
+        "longitude": 76.0870
+      },
+      "crops": ["Banana", "Coffee", "Areca Nut"],
+      "landSize": "2 acres",
+      "soilType": "Red laterite",
+      "irrigationType": "Sprinkler irrigation",
+      "farmingExperience": "20 years", 
+      "preferredLanguage": "Malayalam",
+      "registrationDate": "2025-09-03"
+    },
+    {
+      "id": "farmer_004",
+      "name": "Sunitha Devi",
+      "phone": "9876543213", 
+      "location": "Thrissur, Kerala",
+      "coordinates": {
+        "latitude": 10.5276,
+        "longitude": 76.2144
+      },
+      "crops": ["Coconut", "Nutmeg", "Cocoa"],
+      "landSize": "4 acres",
+      "soilType": "Coastal alluvial",
+      "irrigationType": "Bore well",
+      "farmingExperience": "12 years",
+      "preferredLanguage": "Malayalam", 
+      "registrationDate": "2025-09-04"
+    },
+    {
+      "id": "farmer_005",
+      "name": "Abdul Rahman",
+      "phone": "9876543214",
+      "location": "Malappuram, Kerala", 
+      "coordinates": {
+        "latitude": 11.0445,
+        "longitude": 76.0982
+      },
+      "crops": ["Rice", "Tapioca", "Vegetables"],
+      "landSize": "2.5 acres",
+      "soilType": "Alluvial",
+      "irrigationType": "Canal + Rain fed",
+      "farmingExperience": "18 years",
+      "preferredLanguage": "Malayalam",
+      "registrationDate": "2025-09-05"
+    }
+  ]
+}
