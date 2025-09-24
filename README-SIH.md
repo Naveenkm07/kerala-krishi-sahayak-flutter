@@ -1,7 +1,7 @@
 # Krishi Sakhi - AI-Powered Personal Farming Assistant for Kerala Farmers
 
 **Problem Statement ID:** 25074  
-**Team:** [Your Team Name]  
+**Team:** CodePlays  
 **One-line Pitch:** A Malayalam-first, conversational digital companion that helps smallholder farmers record activities, get personalized advisories, and receive timely reminders using AI and local context.
 
 ## 🎯 Project Overview
